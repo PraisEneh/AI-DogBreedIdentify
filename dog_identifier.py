@@ -23,6 +23,7 @@ IMG_SIZE = 64
 training_data = []
 now = datetime.now()
 
+print(len(tf.config.list_physical_devices('GPU')))
 
 def create_training_data():
     for category in CATEGORIES:
@@ -66,21 +67,21 @@ print('Train Shape: ', X_train.shape)
 # X.reshape((X.shape[0], -1))
 X_train = np.array(X_train).reshape(-1, IMG_SIZE, IMG_SIZE, 3)
 X_train = X_train / (255 * 255 * 255)
-#X = tf.stack(X)
+# X = tf.stack(X)
 
 
 
-POOL_SIZES = [i + 1 for i in range(10)]
-STRIDE_SIZES = [i + 1 for i in range(10)]
-KERNEL_SIZES = [i + 1 for i in range(10)]
+POOL_SIZES = [2]
+STRIDE_SIZES = [2]
+KERNEL_SIZES = [4, 6]
 # how many dense layers we want to have
 dense_layers = [0, 1, 2]
 layer_sizes = [32, 64, 128]
 # how many conv layers do we want to have
-conv_layers = [3, 4, 5, 6]
+conv_layers = [3, 4, 5]
 
-learn_rates = [0.001, 0.003, 0.005]  # , 0.01, 0.03, 0.05, 0.1, 0.3, 0.5]
-dropout_rates = [0.1, 0.2, 0.3]
+learn_rates = [0.001, 0.003]  # , 0.01, 0.03, 0.05, 0.1, 0.3, 0.5]
+dropout_rates = [0.2, 0.3]
 filters = [str(8)]
 
 active_functions = ['softmax', 'tanh', 'sigmoid']
@@ -102,7 +103,7 @@ for dense_layer in dense_layers:
                                     for each_function in active_functions:
                                         try:
                                             current_time = now.strftime('%H_%M_%S')
-                                            NAME = f'{conv_layer}-conv-{layer_size}-nodes-{dense_layer}-dense-{learn_rate}-learn rate-{pool_size}-pool-{stride_size}-stride-{kernel_size}-kernel-{dropout}-dropout-{current_time}'
+                                            NAME = f'{conv_layer}-conv-{layer_size}-nodes-{dense_layer}-dense-{learn_rate}-learn rate-{pool_size}-pool-{stride_size}-stride-{kernel_size}-kernel-{dropout}-dropout-{each_function}-function-{current_time}'
                                             tb = TensorBoard(log_dir=f'logs/{NAME}')
                                             optimize = Adam(learning_rate=learn_rate)
                                             print(NAME)
@@ -149,6 +150,11 @@ Test Data Results
 Checkpoint
 3-conv-32-nodes-0-dense-0.001-learn rate-2-pool-7-stride-8-kernel-0.1-dropout-20_53_01
 
+3-conv-32-nodes-0-dense-0.001-learn rate-3-pool-5-stride-2-kernel-0.3-dropout-21_42_26
+
+3-conv-32-nodes-0-dense-0.001-learn rate-3-pool-5-stride-3-kernel-0.2-dropout-21_42_26
+
+3-conv-32-nodes-0-dense-0.001-learn rate-6-pool-3-stride-1-kernel-0.2-dropout-softmax-function-23_21_35
 
 
 """
