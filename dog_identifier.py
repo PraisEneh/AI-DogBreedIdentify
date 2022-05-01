@@ -24,6 +24,7 @@ IMG_SIZE = 64
 training_data = []
 now = datetime.now()
 
+print(len(tf.config.list_physical_devices('GPU')))
 
 def create_training_data():
     for category in CATEGORIES:
@@ -72,16 +73,16 @@ X_train = X_train / (255 * 255 * 255)
 
 
 
-POOL_SIZES = [2]
-STRIDE_SIZES = [1]
-KERNEL_SIZES = [3, 6, 8]
+POOL_SIZES = [2, 4]
+STRIDE_SIZES = [2]
+KERNEL_SIZES = [16, 32, 64]
 # how many dense layers we want to have
 dense_layers = [2, 3, 4]
 layer_sizes = [64, 128, 256]
 # how many conv layers do we want to have
-conv_layers = [5, 6, 7]
+conv_layers = [5, 6, 8]
 
-learn_rates = [0.001, 0.003]  # , 0.01, 0.03, 0.05, 0.1, 0.3, 0.5]
+learn_rates = [0.001, 0.003, 0.01, 0.03] #, 0.05, 0.1, 0.3, 0.5]
 dropout_rates = [0.2, 0.3]
 filters = [str(8)]
 
@@ -135,7 +136,7 @@ for dense_layer in dense_layers:
                                                 # Train
                                                 model.compile(loss=categorical_crossentropy, optimizer=optimize,
                                                               metrics=['accuracy'])
-                                                model.fit(X_train, y_train, batch_size=32, epochs=100,
+                                                model.fit(X_train, y_train, batch_size=32, epochs=80,
                                                           callbacks=[tb], validation_data=(X_test, y_test))
                                             except Exception as e:
                                                 print('exception')
