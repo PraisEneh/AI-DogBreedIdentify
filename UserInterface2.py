@@ -15,7 +15,6 @@ from tensorflow.keras.utils import load_img, save_img, img_to_array
 from tensorflow.keras.applications.resnet50 import preprocess_input
 from PIL import Image, ImageGrab
 import numpy as np
-import fontstyle
 import cv2
 
 CATEGORIES = ['border_collie', 'cardigan', 'golden_retriever', 'labrador_retriever', 'malamute', 'pomeranian',
