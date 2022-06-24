@@ -24,7 +24,7 @@ Instructions:
 
 If Git is installed, copy and paste into command line:
 
-git clone https://github.com/PraisEneh/AI-DogBreedIdentify 
-cd AI-DogBreedIdentify/
-pip install -r requirements.txt
+git clone https://github.com/PraisEneh/AI-DogBreedIdentify - 
+cd AI-DogBreedIdentify/ - 
+pip install -r requirements.txt - 
 python UserInterface2.py
