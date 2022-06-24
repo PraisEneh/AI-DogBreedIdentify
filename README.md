@@ -17,6 +17,7 @@ At the current moment, it usually has the correct class within its top 3 predict
 There is a folder of test images that are verified to have not been trained on included within this project zip
 
 Instructions:
-1. Download/Unzip the project folder
-2. Using your favorite IDE, import the project folder
-3. Run ‘UserInterface2.py’
+1. In command line, run "pip install -r requirements.txt"
+2. Download/Unzip the project folder
+3. Using your favorite IDE, import the project folder
+4. Run ‘UserInterface2.py’
