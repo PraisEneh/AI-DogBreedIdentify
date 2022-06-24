@@ -21,3 +21,10 @@ Instructions:
 2. Download/Unzip the project folder
 3. Using your favorite IDE, import the project folder
 4. Run ‘UserInterface2.py’
+
+If Git is installed, copy and paste into command line:
+
+git clone https://github.com/PraisEneh/AI-DogBreedIdentify
+cd AI-DogBreedIdentify/
+pip install -r requirements.txt
+python UserInterface2.py
