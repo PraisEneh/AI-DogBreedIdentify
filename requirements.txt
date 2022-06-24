@@ -5,7 +5,7 @@
 # Usage: pip install -r requirements.txt
 
 # Packages --------------------------------
-tk>=8.6.12
+tk
 keras>=2.6.0
 pyqt5>=5.12.3
 numpy>=1.21.6
