@@ -5,6 +5,7 @@
 # Usage: pip install -r requirements.txt
 
 # Packages --------------------------------
+tensorflow>=2.13.0
 tk
 keras>=2.6.0
 pyqt5>=5.12.3
